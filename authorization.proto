@@ -12,8 +12,10 @@ service AuthorizationService {
 
     rpc SignIn(SignInParams)     returns (SignInResponse);
 
+    // TODO: implement the refresh token...
     rpc Refresh(RefreshParams)   returns (RefreshResponse);
 
+    // verify the jwt-token via Authorization header.. "Authorization": "Bearer ${TOKEN}"
     rpc Verify(VerifyParams)     returns (VerifyResponse);
 }
 
@@ -35,9 +37,7 @@ message RefreshResponse {
     string token           = 1;
 }
 
-message VerifyParams {
-    string token           = 1; //required
-}
+message VerifyParams {}
 
 message VerifyResponse {
     string username        = 1;
