@@ -55,7 +55,7 @@ message UpdatePasswordResponse {}
 message ForgotPasswordParams {
     google.protobuf.StringValue username   = 1;
     google.protobuf.StringValue email      = 2;
-    string language                        = 3;
+    string language = 3;
 }
 
 message User {
