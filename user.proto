@@ -53,8 +53,9 @@ message UpdatePasswordParams {
 message UpdatePasswordResponse {}
 
 message ForgotPasswordParams {
-    string username = 1;
-    string language = 2;
+    google.protobuf.StringValue username   = 1;
+    google.protobuf.StringValue email      = 2;
+    string language = 3;
 }
 
 message User {
