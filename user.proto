@@ -66,14 +66,14 @@ message User {
 }
 
 message ResetPasswordParams {
-    string token = 1;//required
+    string ticket_token = 1;//required
     string password = 2;//required
 }
 
 message ResetPasswordResponse {}
 
 message VerifyPasswordParams {
-    string token = 1;//required
+    string ticket_token = 1;//required
 }
 
 message VerifyPasswordResponse {}
