@@ -6,25 +6,23 @@ option go_package = "rpc";
 // https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
 // https://developers.digitalocean.com/documentation/spaces/#list-bucket-contents
 
-service ImageService {
+service FileService {
 
-    rpc CreateImage(CreateImageParams)  returns (Image);
+    rpc CreateFile(CreateFileParams)  returns (File);
 }
 
-message CreateImageParams {
-    string  filename        = 1; // required (same as object_name)
+message CreateFileParams {
+    string  filename        = 1; // required (same as object_name hello_world.txt)
     string  bucket_name    = 2; // required -> given from the UploadImageService
     int64   content_length = 3; // required
     string  mime_type      = 4; // required
 }
 
-message Image {
+message File {
     string  filename        = 1; // same as object_name
     string  created_at     = 2;
     string  updated_at     = 3;
-    bool    is_deleted     = 4;
-    string  bucket_name    = 5;
-    int64   id             = 6;
-    int64   content_length = 7;
-    string  mime_type      = 8;
+    int64   id             = 5;
+    int64   content_length = 6;
+    string  mime_type      = 7;
 }
