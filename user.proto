@@ -53,8 +53,9 @@ message UpdatePasswordParams {
 message UpdatePasswordResponse {}
 
 message ForgotPasswordParams {
-    string username = 1;
-    string language = 2;
+    google.protobuf.StringValue username   = 1;
+    google.protobuf.StringValue email      = 2;
+    string language = 3;
 }
 
 message User {
@@ -65,14 +66,14 @@ message User {
 }
 
 message ResetPasswordParams {
-    string token = 1;//required
+    string ticket_token = 1;//required
     string password = 2;//required
 }
 
 message ResetPasswordResponse {}
 
 message VerifyPasswordParams {
-    string token = 1;//required
+    string ticket_token = 1;//required
 }
 
 message VerifyPasswordResponse {}

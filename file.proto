@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package pepeunlimited.todo;
+option go_package = "rpc";
+
+// https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
+// https://developers.digitalocean.com/documentation/spaces/#list-bucket-contents
+
+service FileService {
+
+    rpc CreateFile(CreateFileParams)  returns (File);
+}
+
+message CreateFileParams {
+    string  filename        = 1; // required (same as object_name hello_world.txt)
+    string  bucket_name    = 2; // required -> given from the UploadImageService
+    int64   content_length = 3; // required
+    string  mime_type      = 4; // required
+}
+
+message File {
+    string  filename        = 1; // same as object_name
+    string  created_at     = 2;
+    string  updated_at     = 3;
+    int64   id             = 5;
+    int64   content_length = 6;
+    string  mime_type      = 7;
+}
