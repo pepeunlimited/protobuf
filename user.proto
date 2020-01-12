@@ -29,6 +29,26 @@ service UserService {
 
     // verify the sign-in with real credentials
     rpc VerifySignIn(VerifySignInParams) returns (User);
+
+    // set or update the profile picture for the user
+    rpc SetProfilePicture(SetProfilePictureParams) returns (ProfilePicture);
+
+    // delete the profile picture from the user
+    rpc DeleteProfilePicture(DeleteProfilePictureParams) returns (ProfilePicture);
+}
+
+
+message SetProfilePictureParams {
+    int64 profile_picture_id = 1;
+}
+
+message DeleteProfilePictureParams {
+    // not here..
+    // had the userId for the jwt-token
+}
+
+message ProfilePicture {
+    int64 profile_picture_id = 1;
 }
 
 message VerifySignInParams {
@@ -59,10 +79,11 @@ message ForgotPasswordParams {
 }
 
 message User {
-    int64 id = 1;
-    string username = 2;
-    string email = 3;
-    repeated string roles = 4;
+    int64 id                 = 1;
+    string username          = 2;
+    string email             = 3;
+    repeated string roles    = 4;
+    google.protobuf.Int64Value profile_picture_id  = 5;
 }
 
 message ResetPasswordParams {
