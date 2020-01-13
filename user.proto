@@ -12,23 +12,8 @@ service UserService {
     // Create the User
     rpc CreateUser(CreateUserParams) returns (User);
 
-    // Update password:Restricted
-    rpc UpdatePassword(UpdatePasswordParams) returns (UpdatePasswordResponse);
-
-    // Generates ticket to password_reset_ticket which sends token via email which can given to user ex. https://www.example.com/reset?token=Talo3mRjaGVzdITUAGOXYZwCMq7EtHfYH4ILcBgKaoWXDHTJOIlBUfcr
-    rpc ForgotPassword(ForgotPasswordParams) returns (google.protobuf.Empty);
-
-    // Verify the password reset token before display anything..
-    rpc VerifyResetPassword(VerifyPasswordParams) returns (VerifyPasswordResponse);
-
-    // Reset the password with the token which is generated from ForgotPassword API and password
-    rpc ResetPassword(ResetPasswordParams) returns (ResetPasswordResponse);
-
     // Get the current user:Restricted
     rpc GetUser(GetUserParams) returns (User);
-
-    // verify the sign-in with real credentials
-    rpc VerifySignIn(VerifySignInParams) returns (User);
 
     // set or update the profile picture for the user
     rpc SetProfilePicture(SetProfilePictureParams) returns (ProfilePicture);
@@ -36,7 +21,6 @@ service UserService {
     // delete the profile picture from the user
     rpc DeleteProfilePicture(DeleteProfilePictureParams) returns (ProfilePicture);
 }
-
 
 message SetProfilePictureParams {
     int64 profile_picture_id = 1;
@@ -51,11 +35,6 @@ message ProfilePicture {
     int64 profile_picture_id = 1;
 }
 
-message VerifySignInParams {
-    string username = 1;//required
-    string password = 2;//required
-}
-
 // CreateUser:CreateUserParams
 message CreateUserParams {
     string username = 1; // required
@@ -65,19 +44,6 @@ message CreateUserParams {
 
 message GetUserParams {}
 
-message UpdatePasswordParams {
-    string current_password = 1;//required
-    string new_password = 2;// required
-}
-
-message UpdatePasswordResponse {}
-
-message ForgotPasswordParams {
-    google.protobuf.StringValue username   = 1;
-    google.protobuf.StringValue email      = 2;
-    string language = 3;
-}
-
 message User {
     int64 id                 = 1;
     string username          = 2;
@@ -85,16 +51,3 @@ message User {
     repeated string roles    = 4;
     google.protobuf.Int64Value profile_picture_id  = 5;
 }
-
-message ResetPasswordParams {
-    string ticket_token = 1;//required
-    string password = 2;//required
-}
-
-message ResetPasswordResponse {}
-
-message VerifyPasswordParams {
-    string ticket_token = 1;//required
-}
-
-message VerifyPasswordResponse {}
