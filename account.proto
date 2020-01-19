@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package pepeunlimited.accounts;
+option go_package = "rpcaccount";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+// https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
+
+service AccountService {
+
+    rpc CreateDeposit(CreateDepositParams)     returns (CreateDepositResponse);
+
+    rpc CreateWithdraw(CreateWithdrawParams)   returns (CreateWithdrawResponse);
+
+    rpc CreateTransfer(CreateTransferParams)   returns (CreateTransferResponse);
+
+    rpc CreateAccount(CreateAccountParams)     returns (Account);
+
+    rpc GetAccounts(google.protobuf.Empty)     returns (GetAccountsResponse);
+
+    rpc GetAccount(GetAccountParams)           returns (Account);
+}
+
+message CreateDepositParams {}
+
+message CreateDepositResponse {}
+
+message CreateWithdrawParams {}
+
+message CreateWithdrawResponse {}
+
+message CreateTransferParams {}
+
+message CreateTransferResponse {}
+
+message CreateAccountParams {}
+
+message GetAccountsResponse {
+    repeated Account accounts = 1;
+}
+
+message GetAccountParams {}
+
+message Account {}
