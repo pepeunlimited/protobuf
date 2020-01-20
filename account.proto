@@ -37,18 +37,22 @@ message CreateTransferResponse {}
 
 message GetAccountsParams {
     google.protobuf.StringValue account_type = 1; // required
+    int64 user_id                            = 2; // required
 }
 
 message CreateAccountParams {
     string account_type = 1; // required
+    int64 user_id       = 2; // required
 }
 
 message GetAccountsResponse {
-    repeated Account accounts = 1;
+    repeated Account accounts = 1; // required
+    int64  user_id            = 2; // required
 }
 
 message GetAccountParams {
-    int64  account_id = 1;
+    int64  account_id = 1; // required
+    int64  user_id    = 2; // required
 }
 
 message Account {
