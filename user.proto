@@ -12,15 +12,14 @@ service UserService {
     // Create the User
     rpc CreateUser(CreateUserParams)                   returns (User);
 
-    // Get the current user:Restricted
-    rpc GetUser(google.protobuf.Empty)                 returns (User);
+    // Get the user
+    rpc GetUser(GetUserParams)                         returns (User);
 
     // set or update the profile picture for the user
     rpc SetProfilePicture(SetProfilePictureParams)       returns (ProfilePicture);
 
     // delete the profile picture from the user
     rpc DeleteProfilePicture(google.protobuf.Empty)     returns (ProfilePicture);
-
 }
 
 message SetProfilePictureParams {
@@ -33,9 +32,9 @@ message ProfilePicture {
 
 // CreateUser:CreateUserParams
 message CreateUserParams {
-    string username = 1; // required
-    string password = 2; // required
-    string email = 3; // required
+    string username     = 1; // required
+    string password     = 2; // required
+    string email        = 3; // required
 }
 
 message User {
@@ -43,5 +42,9 @@ message User {
     string username          = 2;
     string email             = 3;
     repeated string roles    = 4;
-    google.protobuf.Int64Value profile_picture_id  = 5;
+    int64 profile_picture_id  = 5;
+}
+
+message GetUserParams {
+    int64 user_id = 1;
 }
