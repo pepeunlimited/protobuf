@@ -10,30 +10,41 @@ import "google/protobuf/wrappers.proto";
 
 service AccountService {
 
-    rpc CreateDeposit(CreateDepositParams)     returns (CreateDepositResponse);
+    rpc CreateDeposit(CreateDepositParams)     returns (Account);
 
-    rpc CreateWithdraw(CreateWithdrawParams)   returns (CreateWithdrawResponse);
+    rpc CreateWithdraw(CreateWithdrawParams)   returns (Account);
 
     rpc CreateTransfer(CreateTransferParams)   returns (CreateTransferResponse);
 
     rpc CreateAccount(CreateAccountParams)     returns (Account);
 
-    rpc GetAccounts(GetAccountsParams)     returns (GetAccountsResponse);
+    rpc GetAccounts(GetAccountsParams)         returns (GetAccountsResponse);
 
     rpc GetAccount(GetAccountParams)           returns (Account);
 }
 
-message CreateDepositParams {}
+message CreateDepositParams {
+    int64 user_id       = 1;    // required
+    int64 amount        = 2;    // required
+    string account_type = 3;    // required
+}
 
-message CreateDepositResponse {}
+message CreateWithdrawParams {
+    int64 user_id       = 1;    // required
+    int64 amount        = 2;    // required
+}
 
-message CreateWithdrawParams {}
+message CreateTransferParams {
+    int64 from_user_id   = 1;
+    int64 from_amount    = 2;
+    int64 to_user_id     = 3;
+    int64 to_amount      = 4;
+}
 
-message CreateWithdrawResponse {}
-
-message CreateTransferParams {}
-
-message CreateTransferResponse {}
+message CreateTransferResponse {
+    Account from = 1;
+    Account to   = 2;
+}
 
 message GetAccountsParams {
     google.protobuf.StringValue account_type = 1; // required
