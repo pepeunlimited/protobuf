@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pepeunlimited.files;
-option go_package = "rpcspaces";
+option go_package = "spacesrpc";
 
 import "google/protobuf/wrappers.proto";
 
