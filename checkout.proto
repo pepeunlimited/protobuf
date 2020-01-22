@@ -11,11 +11,19 @@ import "google/protobuf/wrappers.proto";
 service CheckoutService {
 
     rpc CreateOrder(CreateOrderParams) returns (Checkout);
+
+    rpc CreateAppleIAP(CreateAppleIAPParams) returns (Checkout);
 }
 
 message CreateOrderParams {
     int64 product_id = 1;
     int64 user_id    = 2;
+}
+
+message CreateAppleIAPParams {
+    string  iap_receipt   = 1;
+    int64   user_id       = 2;
+    int64   product_id    = 3;
 }
 
 message Checkout {}
