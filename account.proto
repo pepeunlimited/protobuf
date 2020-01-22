@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pepeunlimited.accounts;
-option go_package = "accountrpc";
+option go_package = "accountsrpc";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
