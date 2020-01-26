@@ -1,20 +1,20 @@
 syntax = "proto3";
 
 package pepeunlimited.files;
-option go_package = "spacesrpc";
+option go_package = "filesrpc";
 
 import "google/protobuf/wrappers.proto";
 
 // https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
 // https://developers.digitalocean.com/documentation/spaces/#list-bucket-content
 
-service SpacesService {
+service FilesService {
     // NOTE: do not have CreateFile because upload_server.go will handle that!
     rpc GetFile(GetFileParams)           returns (File);
 
     rpc GetFiles(GetFilesParams)         returns (GetFilesResponse);
 
-    rpc GetSpaces(GetSpacesParams)       returns (GetSpacesResponse);
+    rpc GetBuckets(GetBucketsParams)     returns (GetBucketsResponse);
 
     rpc Cut(CutParams)                   returns (CutResponse);
 
@@ -23,19 +23,19 @@ service SpacesService {
     // !! DANGER !! delete's ALL from the selected bucket
     rpc Wipe(WipeParams)                 returns (WipeParamsResponse);
 
-    rpc CreateSpaces(CreateSpacesParams) returns (CreateSpacesResponse);
+    rpc CreateBucket(CreateBucketParams) returns (CreateBucketResponse);
 }
 
-message CreateSpacesParams {
-    string name  = 1;
+message CreateBucketParams {
+    string name         = 1;
     string endpoint     = 2;
 }
 
-message CreateSpacesResponse {
+message CreateBucketResponse {
     string endpoint     = 1;
     string cdn_endpoint = 2;
-    string name  = 3;
-    int64  spaces_id    = 4;
+    string name         = 3;
+    int64  bucket_id    = 4;
 }
 
 message GetFileParams {
@@ -52,16 +52,16 @@ message GetFilesResponse {
     repeated File files      = 1;
 }
 
-message GetSpacesParams {
+message GetBucketsParams {
     int32 page_size         = 1;
     int64 page_token        = 2;
 }
 
-message GetSpacesResponse {
-    repeated Spaces spaces = 1;
+message GetBucketsResponse {
+    repeated Bucket buckets = 1;
 }
 
-message Spaces {
+message Bucket {
     int64  id        = 1;
     string name      = 2;
 }
