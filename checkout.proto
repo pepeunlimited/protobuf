@@ -9,20 +9,19 @@ import "google/protobuf/wrappers.proto";
 // https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
 
 service CheckoutService {
-
     // make a checkout using gift-voucher
-    rpc CreateGiftVoucherOrder(CreateGiftVoucherOrderParams )   returns (Checkout);
+    rpc UseGiftVoucher(UseGiftVoucherOrderParams )   returns (Checkout);
     // make a checkout using apple's IAP-service
-    rpc CreateAppleIAP(CreateAppleIAPParams)                    returns (Checkout);
+    rpc UseAppleIAP(UseAppleIAPParams)               returns (Checkout);
 }
 
-message CreateGiftVoucherOrderParams {
+message UseGiftVoucherOrderParams {
     int64 product_id        = 1;
     int64 user_id           = 2;
     string gift_voucher_id  = 3;
 }
 
-message CreateAppleIAPParams {
+message UseAppleIAPParams {
     string  iap_receipt   = 1;
     int64   user_id       = 2;
     int64   product_id    = 3;
