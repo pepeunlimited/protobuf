@@ -24,21 +24,21 @@ message VerifyReceiptParams {
 }
 
 message VerifyReceiptResponse {
-    enum Status {
-        UNKNOWN_STATUS          = 0;
-        OK                      = 1;
-        REFUNDED                = 2;
-        SUBSCRIPTION_CANCELED   = 3;
-    }
-    Status status = 1;
-    enum Type {
-        UNKNOWN_IAP_TYPE            = 0;
-        CONSUMABLE                  = 1;
-        NON_CONSUMABLE              = 2;
-        AUTO_RENEWABLE_SUBSCRIPTION = 3;
-        NON_RENEWING_SUBSCRIPTIONS  = 4;
-    }
-    Type type                       = 2;
+//    enum Status {
+//        UNKNOWN_STATUS          = 0;
+//        OK                      = 1;
+//        REFUNDED                = 2;
+//        SUBSCRIPTION_CANCELED   = 3;
+//    }
+//    enum Type {
+//        UNKNOWN_IAP_TYPE            = 0;
+//        CONSUMABLE                  = 1;
+//        NON_CONSUMABLE              = 2;
+//        AUTO_RENEWABLE_SUBSCRIPTION = 3;
+//        NON_RENEWING_SUBSCRIPTIONS  = 4;
+//    }
+    string status                   = 1;
+    string type                     = 2;
     string apple_product_id         = 3;
 }
 
