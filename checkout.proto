@@ -19,4 +19,8 @@ message CreateCheckoutParams {
     int64 product_id                                      = 4; // required
 }
 
-message Checkout {}
+message Checkout {
+    int64 order_id                  = 1;
+    int64 payment_id                = 2;
+    uint32 payment_instrument_id    = 3;
+}
