@@ -80,6 +80,7 @@ message OrderItem {
     int64   price_id                = 2;
     uint32  quantity                = 3;
     int64   order_id                = 4;
+    int64   plan_id                 = 5;
 }
 
 message GetOrderItemsResponse {
