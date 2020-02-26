@@ -20,8 +20,8 @@ message EndPriceAtParams {
 
 message Price {
     int64   id              = 1;
-    uint32  price           = 2;
-    uint32  discount        = 3;
+    int64   price           = 2;
+    int64   discount        = 3;
     string  start_at        = 4;
     string  end_at          = 5;
     int64   third_party_id  = 7;
