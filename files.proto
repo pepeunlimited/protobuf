@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pepeunlimited.files;
-option go_package = "filesrpc";
+option go_package = "files";
 
 import "google/protobuf/wrappers.proto";
 
@@ -28,7 +28,6 @@ service FilesService {
 
 message CreateBucketParams {
     string name         = 1;
-    string endpoint     = 2;
 }
 
 message CreateBucketResponse {

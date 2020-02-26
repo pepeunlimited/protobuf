@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pepeunlimited.apple;
-option go_package = "applerpc";
+option go_package = "appleiap";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
